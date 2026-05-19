@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Marketing Toolbox</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+  </head>
+
+  <body>
+    <header class="container">
+      <h5><a href="index.html">Tripwise Tools</a></h5>
+      <nav>
+        <ul>
+          <li><a href="speed.html">Average Speed</a></li>
+          <li><a href="estimate.html">ETA</a></li>
+          <li><a href="fuelCost.html">Fuel Cost</a></li> 
+          <li><a href="itinerary.html">Itinerary Cost</a></li>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section>
+        <h5>ETA Calculator</h5>
+        <label for="distance">Distance (Km):</label>
+        <input id="distance" type="number"/>
+        <label for="speed">Speed (Km/h):</label>
+        <input id="speed" type="number"/>
+        <button id="estimate" type="submit">Calculate ETA</button>
+        <p id="result"></p>
+      </section>
+      
+    </main>
+
+    <footer class="container">
+      <small>
+        Go from zero to hero at full stack development with
+        <a href="https://neog.camp">neog.camp</a>
+      </small>
+    </footer>
+    <script>
+
+        function estimateTime(){
+            const distanceElement = document.getElementById("distance");
+            const speedElement = document.getElementById("speed");
+
+            const distance = distanceElement.value;
+            const speed = speedElement.value;
+            const resultElement = document.getElementById("result");
+            
+            const ETA = distance / speed;
+            resultElement.innerText = "Estimated Time of arrival: " + ETA + " hours";
+
+
+        }
+       
+        const estimateBtn = document.getElementById("estimate");
+       
+       
+
+        estimateBtn.addEventListener("click", estimateTime);
+
+        </script>
+
+  </body>
+</html>

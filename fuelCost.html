@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Marketing Toolbox</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+  </head>
+
+  <body>
+    <header class="container">
+      <h5><a href="index.html">Tripwise Tools</a></h5>
+      <nav>
+        <ul>
+          <li><a href="speed.html">Average Speed</a></li>
+          <li><a href="estimate.html">ETA</a></li>
+          <li><a href="fuelCost.html">Fuel Cost</a></li> 
+          <li><a href="itinerary.html">Itinerary Cost</a></li>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section>
+        <h5>Fuel Cost Calculator</h5>
+
+        <label for="distance">Distance (Km):</label>
+        <input id="distance" type="number"/>
+
+        <label for="efficiency">Fuel Efficiency (Km/l):</label>
+        <input id="efficiency" type="number"/>
+      
+        <label for="price">Fuel Price (per litre): </label>
+        <input id="price" type="number"/>
+        
+        <button id="costCalculate" type="submit">Calculate Cost</button>
+
+        <p id="result"></p>
+
+      </section>
+      
+    </main>
+
+    <footer class="container">
+      <small>
+        Go from zero to hero at full stack development with
+        <a href="https://neog.camp">neog.camp</a>
+      </small>
+    </footer>
+    <script>
+
+        function calculateCost(){
+        const distanceElement = document.getElementById("distance");
+        const fuelEfficiencyElement =  document.getElementById("efficiency");
+        const priceElement = document.getElementById("price");
+
+        const distance = distanceElement.value;
+        const fuelEfficiency = fuelEfficiencyElement.value;
+        const price = priceElement.value;
+
+        const fuelNeeded = distance / fuelEfficiency;
+        const totalCost = fuelNeeded * price ;
+        
+        resultElement.innerText = "Total Fuel Cost: ₹ " + totalCost
+        }
+        
+        const costBtn = document.getElementById("costCalculate");
+        const resultElement = document.getElementById("result");
+
+         costBtn.addEventListener("click", calculateCost)
+
+        </script>
+  </body>
+</html>

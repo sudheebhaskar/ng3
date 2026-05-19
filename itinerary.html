@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Marketing Toolbox</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+  </head>
+
+  <body>
+    <header class="container">
+      <h5><a href="index.html">Tripwise Tools</a></h5>
+      <nav>
+        <ul>
+          <li><a href="speed.html">Average Speed</a></li>
+          <li><a href="estimate.html">ETA</a></li>
+          <li><a href="fuelCost.html">Fuel Cost</a></li> 
+          <li><a href="itinerary.html">Itinerary Cost</a></li>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section>
+        <h5>Itinerary Cost Estimator</h5>
+        
+        <label for="transport">Transport Cost:</label>
+        <input id="transport" type="number" />
+
+        <label for="hotelType">Hotel Type:</label>
+        <select id="hotelType">
+            <option value="Budget">Budget</option>
+            <option value="Standard">Standard</option>
+            <option value="Luxury">Luxury</option>
+        </select>
+
+        <label for="foodCost">Food Cost:</label>
+        <input id="foodCost" type="number"/>
+
+        <label for="activityCost">Activities Cost:</label>
+        <input id="activityCost" type="number"/>
+
+        <button id="calculateTotal" type="submit">Calculate Total</button>
+        <p id="result">
+
+        </p>
+        
+
+      </section>
+      
+    </main>
+
+    <footer class="container">
+      <small>
+        Go from zero to hero at full stack development with
+        <a href="https://neog.camp">neog.camp</a>
+      </small>
+    </footer>
+    <script>
+
+        function calculateTotal(){
+        const transportElement = document.getElementById("transport");
+        const hotelElement = document.getElementById("hotelType");
+
+        const foodElement = document.getElementById("foodCost");
+        const activityElement = document.getElementById("activityCost");
+        const resultElement = document.getElementById("result");
+
+        const transportCost = parseFloat(transportElement.value);
+        const hotelType = hotelElement.value;
+        const foodsCost = parseFloat(foodElement.value);
+        const activitysCost = parseFloat(activityElement.value);
+        let hotelCost = 0;
+
+        if(hotelType === "Budget"){
+            hotelCost = 1000;
+        } else if(hotelType === "Standard"){
+            hotelCost = 2500;
+        } else {
+            hotelCost = 3000
+        }
+        
+        // console.log(typeof(transportCost));
+        // console.log(typeof(hotelCost));
+        // console.log(typeof(foodsCost));
+        // console.log(typeof(activitysCost));
+
+        const totalCost = transportCost + hotelCost + foodsCost + activitysCost;
+        resultElement.innerText = "Total Trip Cost: ₹" + totalCost + " (Hotel Cost: ₹" + hotelCost + ")";
+        }
+        
+
+        const calculateBtn = document.getElementById("calculateTotal");
+       
+        calculateBtn.addEventListener("click", calculateTotal);
+
+        
+
+    </script>
+
+  </body>
+</html>
